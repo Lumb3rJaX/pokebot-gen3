@@ -2,48 +2,48 @@
 # See readme for documentation: https://github.com/40Cakes/pokebot-gen3#discordyml---discord-integration-config
 
 rich_presence: false # `true`, `false`
-global_webhook_url: https://discord.com/api/webhooks/<your_webhook_here>
+global_webhook_url: https://discord.com/api/webhooks/1164275318056558612/bgsqLJkVQUKM5T5Ok_k7dE4MMHnvGaPoYhWox_fqL1k8BqBPcbjSfxwPbMPzqyJ_IT6S
 iv_format: formatted # `basic`, `formatted`
 bot_id: PokéBot # Any string of text
 
 # Shiny Pokémon encounters
 shiny_pokemon_encounter:
-  enable: false
-  ping_mode:
-  ping_id:
+  enable: true
+  ping_mode: user
+  ping_id: 355346584654970882
   #webhook_url:
 
 # Pokémon encounter milestones
 pokemon_encounter_milestones:
-  enable: false
+  enable: true
   interval: 10000
-  ping_mode:
-  ping_id:
+  ping_mode: user
+  ping_id: 355346584654970882
   #webhook_url:
 
 # Shiny Pokémon encounter milestones
 shiny_pokemon_encounter_milestones:
-  enable: false
-  interval: 5
-  ping_mode:
-  ping_id:
+  enable: true
+  interval: 2
+  ping_mode: user
+  ping_id: 355346584654970882
   #webhook_url:
 
 # Total encounter milestones
 total_encounter_milestones:
-  enable: false
+  enable: true
   interval: 25000
-  ping_mode:
-  ping_id:
+  ping_mode: user
+  ping_id: 355346584654970882
   #webhook_url:
 
 # Phase summary
 phase_summary:
   enable: false
   first_interval: 8192
-  consequent_interval: 5000
-  ping_mode:
-  ping_id:
+  consequent_interval: 4000
+  ping_mode: user
+  ping_id: 355346584654970882
   #webhook_url:
 
 # Anti-Shiny Pokémon encounters
