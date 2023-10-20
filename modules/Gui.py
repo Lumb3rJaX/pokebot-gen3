@@ -133,7 +133,7 @@ class EmulatorControls:
 
         self._SetButtonColour(self.toggle_video_button, emulator.GetVideoEnabled())
         self._SetButtonColour(self.toggle_audio_button,
-                              active_condition=emulator.GetAudioDisabled(),
+                              active_condition=emulator.GetAudioEnabled(),
                               disabled_condition=not emulator.GetThrottle())
 
     def SetMessage(self, message: str):
