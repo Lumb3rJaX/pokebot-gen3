@@ -133,7 +133,7 @@ class EmulatorControls:
 
         self._SetButtonColour(self.toggle_video_button, emulator.GetVideoEnabled())
         self._SetButtonColour(self.toggle_audio_button,
-                              active_condition=emulator.GetAudioEnabled(),
+                              active_condition=emulator.GetAudioDisabled(),
                               disabled_condition=not emulator.GetThrottle())
 
     def SetMessage(self, message: str):
@@ -428,7 +428,7 @@ class PokebotGui:
         self.controls.Update()
 
     def ToggleAudio(self) -> None:
-        emulator.SetAudioDisabledx(not emulator.GetAudioDisabled())
+        emulator.SetAudioEnabled(not emulator.GetAudioEnabled())
         self.controls.Update()
 
     def ToggleVideo(self) -> None:
