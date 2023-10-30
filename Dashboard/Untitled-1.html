@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dashboard_1</title>
+<link href="dashboard.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+
+body {
+    background-image: url(background1.jpg);
+	font-family: "pokemon emerald"
+	}
+		
+	
+</style>
+</head>
+<body class="body">
+	<script>
+	
+	function updateDateTime() {
+		const now = new Date();
+		
+		const currentDateTime = now.toLocaleString();
+		
+	document.querySelector('#datetime').textContent = currentDateTime;
+	}
+	setInterval(updateDateTime, 1000);
+	</script>
+	<span id="datetime" style="font-family: 'pokemon emerald'" ></span>
+	
+	</body>
+</html>
