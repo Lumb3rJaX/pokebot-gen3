@@ -435,25 +435,22 @@ class PokebotGui:
         emulator.SetVideoEnabled(not emulator.GetVideoEnabled())
         self.controls.Update()
         if not emulator.GetVideoEnabled():
-            self.SetPlaceholderImage()
+            # Create a fancy placeholder image.
+            placeholder = PIL.Image.new(mode='RGBA', size=(self.width * self.scale, self.height * self.scale))
+            draw = PIL.ImageDraw.Draw(placeholder)
 
-    def SetPlaceholderImage(self) -> None:
-        # Create a fancy placeholder image.
-        placeholder = PIL.Image.new(mode='RGBA', size=(self.width * self.scale, self.height * self.scale))
-        draw = PIL.ImageDraw.Draw(placeholder)
+            # Black background
+            draw.rectangle(xy=[(0, 0), (placeholder.width, placeholder.height)], fill='#000000FF')
 
-        # Black background
-        draw.rectangle(xy=[(0, 0), (placeholder.width, placeholder.height)], fill='#000000FF')
+            # Paste a random sprite on top
+            sprite = PIL.Image.open(self.ChooseRandomSprite())
+            if sprite.mode != 'RGBA':
+                sprite = sprite.convert('RGBA')
+            sprite_position = (placeholder.width // 2 - sprite.width // 2, placeholder.height // 2 - sprite.height // 2)
+            placeholder.paste(sprite, sprite_position, sprite)
 
-        # Paste a random sprite on top
-        sprite = PIL.Image.open(self.ChooseRandomSprite())
-        if sprite.mode != 'RGBA':
-            sprite = sprite.convert('RGBA')
-        sprite_position = (placeholder.width // 2 - sprite.width // 2, placeholder.height // 2 - sprite.height // 2)
-        placeholder.paste(sprite, sprite_position, sprite)
-
-        self.canvas_current_image = PIL.ImageTk.PhotoImage(placeholder)
-        self.canvas.create_image(self.center_of_canvas, image=self.canvas_current_image, state='normal')
+            self.canvas_current_image = PIL.ImageTk.PhotoImage(placeholder)
+            self.canvas.create_image(self.center_of_canvas, image=self.canvas_current_image, state='normal')
 
     def SetBotMode(self, new_bot_mode: str) -> None:
         SetBotMode(new_bot_mode)
@@ -497,10 +494,8 @@ class PokebotGui:
                         self.ToggleSteppingMode()
                     case 'zoom_in':
                         self.SetScale(min(5, self.scale + 1))
-                        self.SetPlaceholderImage()
                     case 'zoom_out':
                         self.SetScale(max(1, self.scale - 1))
-                        self.SetPlaceholderImage()
                     case 'toggle_manual':
                         ToggleManualMode()
                         console.print(f'Now in [cyan]{config["general"]["bot_mode"]}[/] mode')
